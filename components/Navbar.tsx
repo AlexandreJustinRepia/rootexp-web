@@ -1,0 +1,55 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Trees, Menu, X } from "lucide-react";
+import { useState } from "react";
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <nav className="fixed top-0 w-full z-50 px-6 py-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between glass-base glass-nav px-6 py-3 rounded-2xl">
+        <div className="flex items-center gap-2">
+          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-background shadow-lg shadow-primary/20">
+            <Trees size={24} />
+          </div>
+          <span className="text-xl font-bold tracking-tight text-primary">RootEXP</span>
+        </div>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          <a href="#features" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Features</a>
+          <a href="#quests" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Quests</a>
+          <a href="#community" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Community</a>
+          <button className="bg-primary text-background px-6 py-2 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+            Start Growing
+          </button>
+        </div>
+
+        {/* Mobile Toggle */}
+        <button className="md:hidden text-primary" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="absolute top-24 left-6 right-6 glass-base glass-nav p-6 rounded-2xl md:hidden"
+        >
+          <div className="flex flex-col gap-4">
+            <a href="#features" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Features</a>
+            <a href="#quests" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Quests</a>
+            <a href="#community" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Community</a>
+            <button className="bg-primary text-background w-full py-3 rounded-xl font-bold shadow-lg shadow-primary/20">
+              Start Growing
+            </button>
+          </div>
+        </motion.div>
+      )}
+    </nav>
+  );
+}
