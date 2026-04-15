@@ -42,7 +42,7 @@ export default function Footer() {
       </div>
       
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-primary/5 text-center text-sm font-bold text-foreground/40">
-        © 2026 RootEXP. Rooted in financial integrity.
+        © 2026 RootEXP.
       </div>
     </footer>
   );

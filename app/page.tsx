@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeatureCards from "@/components/FeatureCards";
 import GrowthCTA from "@/components/GrowthCTA";
+import FeedbackSection from "@/components/FeedbackSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
         <FeatureCards />
       </div>
       <GrowthCTA />
+      <FeedbackSection />
       <Footer />
     </main>
   );
