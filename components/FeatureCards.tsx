@@ -1,31 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, Target, Users, TrendingUp } from "lucide-react";
+import { Trees, Wallet, Bot, Lock } from "lucide-react";
 
 const features = [
   {
-    title: "Daily Quests",
-    description: "Complete quick financial challenges each day to earn 'Leaf' points and grow your forest.",
-    icon: <Zap className="text-primary" size={24} />,
+    title: "Dynamic Visualization",
+    description: "Your financial health is a living tree. It grows with smart habits and withers with overspending. Customize your growth with skins like Sakura or Golden Money.",
+    icon: <Trees className="text-primary" size={24} />,
     color: "bg-primary/10",
   },
   {
-    title: "Savings Goals",
-    description: "Set visual milestones for your savings. Witness individual trees thrive as you deposit funds.",
-    icon: <Target className="text-primary" size={24} />,
+    title: "Pro Finance Management",
+    description: "Multi-wallet support, comprehensive transaction history, savings goals, and aggressive vs. default budget planning modes built right in.",
+    icon: <Wallet className="text-primary" size={24} />,
     color: "bg-primary/10",
   },
   {
-    title: "Community Forest",
-    description: "Connect with others building habits. View social proof of real financial growth in real-time.",
-    icon: <Users className="text-primary" size={24} />,
+    title: "AI Financial Coach",
+    description: "Run 'What-if' scenario simulations, get cashflow forecasts, and receive adaptive coaching to optimize debt payoff—all powered by a fully offline, on-device AI.",
+    icon: <Bot className="text-primary" size={24} />,
     color: "bg-primary/10",
   },
   {
-    title: "Smart Insights",
-    description: "AI-driven tips to optimize your spending and increase your level faster than ever.",
-    icon: <TrendingUp className="text-primary" size={24} />,
+    title: "Absolute Privacy",
+    description: "100% offline. All data is stored locally on your device with zero cloud tracking. Secured by mandatory PIN and biometric authentication.",
+    icon: <Lock className="text-primary" size={24} />,
     color: "bg-primary/10",
   },
 ];
@@ -35,9 +35,9 @@ export default function FeatureCards() {
     <section id="features" className="py-24 px-6 bg-surface dark:bg-surface/50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-extrabold mb-4 tracking-tight">Gamified Habit Building</h2>
+          <h2 className="text-4xl font-extrabold mb-4 tracking-tight">Gamified, Yet Professional</h2>
           <p className="text-foreground text-lg leading-relaxed max-w-2xl mx-auto">
-            RootEXP combines behavioural psychology with nature aesthetics to make finance management genuinely enjoyable.
+            A gritty, no-nonsense approach to securing your bag, wrapped in a beautiful, nature-inspired aesthetic.
           </p>
         </div>
 

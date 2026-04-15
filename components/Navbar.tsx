@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Trees, Menu, X } from "lucide-react";
+import { Trees, Menu, X, Download } from "lucide-react";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
@@ -21,12 +21,11 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           <a href="#features" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Features</a>
-          <a href="#quests" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Quests</a>
-          <a href="#community" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Community</a>
           <ThemeToggle />
-          <button className="bg-primary text-background px-6 py-2 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
-            Start Growing
-          </button>
+          <a href="#download" className="bg-primary text-background px-6 py-2 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform flex items-center gap-2">
+            <Download size={16} />
+            Download APK
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -44,14 +43,13 @@ export default function Navbar() {
         >
           <div className="flex flex-col gap-4">
             <a href="#features" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Features</a>
-            <a href="#quests" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Quests</a>
-            <a href="#community" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Community</a>
             <div className="flex justify-center">
               <ThemeToggle />
             </div>
-            <button className="bg-primary text-background w-full py-3 rounded-xl font-bold shadow-lg shadow-primary/20">
-              Start Growing
-            </button>
+            <a href="#download" className="bg-primary text-background w-full py-3 rounded-xl font-bold shadow-lg shadow-primary/20 flex justify-center items-center gap-2">
+              <Download size={20} />
+              Download APK
+            </a>
           </div>
         </motion.div>
       )}
