@@ -2,18 +2,40 @@
 
 import { motion } from "framer-motion";
 import { Trees, Menu, X, Download } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    // Sync initial theme
+    setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
+
+    // Watch for theme changes on html element
+    const observer = new MutationObserver(() => {
+      setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <nav className="fixed top-0 w-full z-50 px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between glass-base glass-nav px-6 py-3 rounded-2xl">
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-background shadow-lg shadow-primary/20">
-            <Trees size={24} />
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden shadow-lg">
+            {theme === "light" ? (
+              <img src="/icon-light.png" alt="RootEXP Logo" className="w-full h-full object-cover" />
+            ) : (
+              <img src="/icon-dark.png" alt="RootEXP Logo" className="w-full h-full object-cover" />
+            )}
           </div>
           <span className="text-xl font-bold tracking-tight text-primary">RootEXP</span>
         </div>
