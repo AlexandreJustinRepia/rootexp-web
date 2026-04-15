@@ -26,11 +26,14 @@ export default function StarRating({ rating, onRatingChange, interactive = false
           onClick={() => interactive && onRatingChange?.(star)}
           onMouseEnter={() => interactive && setHoverRating(star)}
           onMouseLeave={() => interactive && setHoverRating(0)}
-          className={`transition-colors ${
-            star <= displayRating ? "text-yellow-400 fill-yellow-400" : "text-gray-300 fill-transparent"
+          className={`${
+            star <= displayRating ? "text-yellow-400" : "text-gray-300"
           } ${interactive ? "cursor-pointer" : "cursor-default"}`}
         >
-          <Star size={interactive ? 24 : 16} />
+          <Star 
+            size={interactive ? 24 : 16} 
+            fill={star <= displayRating ? "currentColor" : "transparent"} 
+          />
         </motion.button>
       ))}
     </div>
