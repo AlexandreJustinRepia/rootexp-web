@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Download, Smartphone, Sparkles } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import DownloadBadge from "./DownloadBadge";
 
 // --- Tree Configuration Models ---
 type LeafShape = "petal" | "crystal" | "techSquare" | "circle";
@@ -25,12 +26,37 @@ const TREE_SKINS: TreeSkin[] = [
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [activeSkinIndex, setActiveSkinIndex] = useState(0);
+  const [downloadCount, setDownloadCount] = useState(0);
   const [growthProgress, setGrowthProgress] = useState(0);
   
+  const fetchStats = useCallback(async () => {
+    try {
+      const res = await fetch("/api/stats");
+      const data = await res.json();
+      setDownloadCount(data.download_count || 0);
+    } catch (e) {
+      console.error("Failed to fetch stats", e);
+    }
+  }, []);
+
+  const handleDownloadClick = async () => {
+    try {
+      // Optimistic update
+      setDownloadCount(prev => prev + 1);
+      await fetch("/api/stats", { method: "POST" });
+    } catch (e) {
+      console.error("Failed to track download", e);
+    }
+  };
+
   // Use a ref for the progress so the canvas animation loop can access the latest
   // value without causing heavy React re-renders on every frame.
   const progressRef = useRef(0);
   const skinRef = useRef(TREE_SKINS[0]);
+
+  useEffect(() => {
+    fetchStats();
+  }, [fetchStats]);
 
   useEffect(() => {
     skinRef.current = TREE_SKINS[activeSkinIndex];
@@ -244,12 +270,16 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6">
-            <Smartphone size={16} />
-            <span>Interactive Mobile Model</span>
+          <div className="flex flex-col gap-6">
+            <div className="inline-flex items-center gap-2 self-start px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold mb-2">
+              <Smartphone size={16} />
+              <span>Interactive Mobile Model</span>
+            </div>
+
+            <DownloadBadge count={downloadCount} />
           </div>
           
-          <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+          <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight mt-6">
             Watch Your <br />
             <span className="text-primary italic">Wealth Grow</span>
           </h1>
@@ -259,7 +289,11 @@ export default function Hero() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="#download" className="bg-primary text-background px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 text-lg shadow-xl shadow-primary/30 hover:scale-105 transition-transform">
+            <a 
+              href="#download" 
+              onClick={handleDownloadClick}
+              className="bg-primary text-background px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 text-lg shadow-xl shadow-primary/30 hover:scale-105 transition-transform"
+            >
               <Download size={20} />
               Get RootEXP APK
             </a>

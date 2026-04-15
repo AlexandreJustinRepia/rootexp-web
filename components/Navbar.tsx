@@ -45,7 +45,11 @@ export default function Navbar() {
           <a href="/" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Home</a>
           <a href="#features" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Features</a>
           <ThemeToggle />
-          <a href="#download" className="bg-primary text-background px-6 py-2 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform flex items-center gap-2">
+          <a 
+            href="#download" 
+            onClick={() => fetch("/api/stats", { method: "POST" })}
+            className="bg-primary text-background px-6 py-2 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform flex items-center gap-2"
+          >
             <Download size={16} />
             Download APK
           </a>
