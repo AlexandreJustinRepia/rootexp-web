@@ -34,7 +34,7 @@ export default function Footer() {
         <div>
           <h4 className="font-bold mb-6">Legal & Support</h4>
           <ul className="space-y-4 text-sm font-bold text-foreground">
-            <li><a href="#" className="hover:text-primary transition-colors">Offline Privacy Policy</a></li>
+            <li><a href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</a></li>
             <li><a href="#" className="hover:text-primary transition-colors">Security Details</a></li>
             <li><a href="#" className="hover:text-primary transition-colors">Contact Support</a></li>
           </ul>

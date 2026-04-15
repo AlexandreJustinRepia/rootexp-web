@@ -20,6 +20,7 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
+          <a href="/" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Home</a>
           <a href="#features" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Features</a>
           <ThemeToggle />
           <a href="#download" className="bg-primary text-background px-6 py-2 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform flex items-center gap-2">
@@ -42,6 +43,7 @@ export default function Navbar() {
           className="absolute top-24 left-6 right-6 glass-base glass-nav p-6 rounded-2xl md:hidden"
         >
           <div className="flex flex-col gap-4">
+            <a href="/" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Home</a>
             <a href="#features" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Features</a>
             <div className="flex justify-center">
               <ThemeToggle />
