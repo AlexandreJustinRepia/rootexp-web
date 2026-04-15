@@ -51,15 +51,8 @@ export default function GrowthCTA() {
                 Early Access Build
               </div>
               <p className="text-sm text-foreground/80 leading-snug">
-                Roots is currently in active development. You might encounter some bugs—if you do, your feedback is invaluable in helping the forest grow!
+                RootEXP is currently in active development. You might encounter some bugs—if you do, your feedback is invaluable in helping the forest grow!
               </p>
-              <a 
-                href="mailto:feedback@yourdomain.com" // Replace with your feedback link or email
-                className="text-primary text-sm font-bold flex items-center justify-center gap-1 hover:underline"
-              >
-                <MessageSquareHeart size={14} />
-                Send Feedback
-              </a>
             </div>
           </div>
 
