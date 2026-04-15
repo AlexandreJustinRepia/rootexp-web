@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import StarRating from "./StarRating";
-import { supabase } from "@/lib/supabase";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function FeedbackForm({ onSubmitted }: { onSubmitted: () => void }) {
   const [rating, setRating] = useState(0);
@@ -14,6 +14,8 @@ export default function FeedbackForm({ onSubmitted }: { onSubmitted: () => void 
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (rating === 0) {
@@ -22,24 +24,39 @@ export default function FeedbackForm({ onSubmitted }: { onSubmitted: () => void 
       return;
     }
 
+    const token = recaptchaRef.current?.getValue();
+    if (!token) {
+      setStatus("error");
+      setErrorMessage("Please complete the reCAPTCHA challenge.");
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus("idle");
 
     try {
-      const { error } = await supabase.from("feedback").insert([
-        {
+      const response = await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           rating,
           comment,
           user_name: userName || "Anonymous User",
-        },
-      ]);
+          token,
+        }),
+      });
 
-      if (error) throw error;
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to submit feedback");
+      }
 
       setStatus("success");
       setRating(0);
       setComment("");
       setUserName("");
+      recaptchaRef.current?.reset();
       onSubmitted();
 
       // Reset success status after a few seconds
@@ -49,6 +66,7 @@ export default function FeedbackForm({ onSubmitted }: { onSubmitted: () => void 
       setStatus("error");
       const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
       setErrorMessage(message);
+      recaptchaRef.current?.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -89,6 +107,14 @@ export default function FeedbackForm({ onSubmitted }: { onSubmitted: () => void 
             placeholder="What do you think about the RootEXP app?"
             rows={4}
             className="w-full bg-surface/50 border border-primary/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-sm resize-none"
+          />
+        </div>
+
+        <div className="flex justify-center py-2 overflow-hidden">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE || ""}
+            theme="light" // Could be synced with app theme if desired
           />
         </div>
 
