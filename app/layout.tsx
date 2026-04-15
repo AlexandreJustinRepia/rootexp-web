@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jakarta.variable} font-sans scroll-smooth`}>
-      <body className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary">
+      <body className="min-h-screen bg-background text-foreground dark:bg-background-dark dark:text-foreground-dark antialiased selection:bg-primary/20 selection:text-primary">
         {children}
       </body>
     </html>
