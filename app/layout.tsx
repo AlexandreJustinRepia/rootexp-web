@@ -10,7 +10,10 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "RootEXP | Grow Your Wealth, Grow Your Life",
-  description: "RootEXP is a gamified budgeting app where you grow a tree by managing your finances and building healthy savings habits.",
+  description: "RootEXP is a gamified budgeting app where you grow a tree...",
+  icons: {
+    icon: "/icon-light.png",
+  },
 };
 
 export default function RootLayout({
