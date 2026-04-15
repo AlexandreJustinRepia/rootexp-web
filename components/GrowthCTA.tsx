@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, Shield, AlertTriangle, MessageSquareHeart } from "lucide-react";
+import { Download, Shield, AlertTriangle, Info } from "lucide-react";
 
 export default function GrowthCTA() {
   const downloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20%28Early%20Access%29.apk";
@@ -44,15 +44,30 @@ export default function GrowthCTA() {
               Download APK (Android)
             </button>
 
-            {/* Early Access Notice Box */}
-            <div className="max-w-md bg-orange-500/10 border border-orange-500/20 rounded-2xl p-4 flex flex-col gap-2">
-              <div className="flex items-center justify-center gap-2 text-orange-500 font-bold uppercase text-xs tracking-widest">
+            {/* Combined Early Access & Security Notice */}
+            <div className="max-w-md bg-orange-500/5 border border-orange-500/20 rounded-3xl p-6 flex flex-col gap-4 text-left">
+              <div className="flex items-center gap-2 text-orange-500 font-bold uppercase text-xs tracking-widest">
                 <AlertTriangle size={16} />
                 Early Access Build
               </div>
+              
               <p className="text-sm text-foreground/80 leading-snug">
-                RootEXP is currently in active development. You might encounter some bugs—if you do, your feedback is invaluable in helping the forest grow!
+                RootEXP is in active development. You might encounter some bugs—your feedback is valuable in helping the forest grow!
               </p>
+
+              <hr className="border-orange-500/10" />
+
+              <div className="flex gap-3">
+                <div className="mt-1 text-primary">
+                  <Info size={18} />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-foreground mb-1">Security Note</p>
+                  <p className="text-xs text-foreground/70 leading-relaxed">
+                    Android may flag this as an "Unknown App" because it is downloaded directly. Since the app is <b>100% offline-first</b> and carries no trackers, it is safe to install. You can select "Install anyway" to proceed.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 

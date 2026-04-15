@@ -71,6 +71,7 @@ export default function Navbar() {
           <div className="flex flex-col gap-4">
             <a href="/" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Home</a>
             <a href="#features" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Features</a>
+            <a href="#ratings" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Features</a>
             <div className="flex justify-center">
               <ThemeToggle />
             </div>
