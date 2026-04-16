@@ -43,11 +43,13 @@ export default function Hero() {
     try {
       // Optimistic update
       setDownloadCount(prev => prev + 1);
+      localStorage.setItem("has_downloaded", "true");
       await fetch("/api/stats", { method: "POST" });
     } catch (e) {
       console.error("Failed to track download", e);
     }
   };
+
 
   // Use a ref for the progress so the canvas animation loop can access the latest
   // value without causing heavy React re-renders on every frame.

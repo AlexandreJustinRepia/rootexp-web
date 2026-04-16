@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, Lock, Download, ArrowUpRight } from "lucide-react";
 import StarRating from "./StarRating";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -13,11 +13,38 @@ export default function FeedbackForm({ onSubmitted }: { onSubmitted: () => void 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [hasDownloaded, setHasDownloaded] = useState(false);
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
+  // Check download status on mount and via interval
+  useEffect(() => {
+    const checkStatus = () => {
+      const downloaded = localStorage.getItem("has_downloaded") === "true";
+      setHasDownloaded(downloaded);
+    };
+
+    checkStatus();
+    
+    // Poll every 2 seconds if not downloaded yet
+    const interval = setInterval(() => {
+      if (!hasDownloaded) {
+        checkStatus();
+      }
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [hasDownloaded]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!hasDownloaded) {
+      setStatus("error");
+      setErrorMessage("Please download the app first to leave feedback.");
+      return;
+    }
+
     if (rating === 0) {
       setStatus("error");
       setErrorMessage("Please provide a star rating.");
@@ -72,6 +99,48 @@ export default function FeedbackForm({ onSubmitted }: { onSubmitted: () => void 
     }
   };
 
+  if (!hasDownloaded) {
+    return (
+      <div className="glass-base glass-card p-12 rounded-[2.5rem] border-primary/20 text-center relative overflow-hidden group">
+        <div className="absolute inset-0 bg-primary/5 -z-10 group-hover:scale-110 transition-transform duration-700" />
+        <div className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mx-auto mb-8 text-primary shadow-inner">
+          <Lock size={40} className="animate-pulse" />
+        </div>
+        <h3 className="text-3xl font-black mb-4 tracking-tight">Experience First</h3>
+        <p className="text-foreground/60 max-w-xs mx-auto mb-10 font-medium leading-relaxed">
+          Please download and try the RootEXP app before leaving your review. We value authentic feedback from our users!
+        </p>
+        <a 
+          href="#download" 
+          onClick={() => {
+            localStorage.setItem("has_downloaded", "true");
+            setHasDownloaded(true);
+          }}
+          className="inline-flex items-center gap-2 bg-primary text-background px-10 py-5 rounded-2xl font-black shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all text-lg"
+        >
+          <Download size={24} />
+          Get RootEXP Now
+          <ArrowUpRight size={20} className="opacity-50" />
+        </a>
+        <div className="mt-8 flex flex-col items-center gap-2">
+          <p className="text-xs font-bold uppercase tracking-widest text-primary/40">
+            Unlocks automatically after download
+          </p>
+          <button 
+            onClick={() => {
+              localStorage.setItem("has_downloaded", "true");
+              setHasDownloaded(true);
+            }}
+            className="text-[10px] font-bold uppercase tracking-widest text-primary/30 hover:text-primary transition-colors cursor-pointer underline underline-offset-4"
+          >
+            Already downloaded? Click to unlock
+          </button>
+        </div>
+
+      </div>
+    );
+  }
+
   return (
     <div className="glass-base glass-card p-8 rounded-3xl border-primary/20">
       <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
@@ -114,7 +183,7 @@ export default function FeedbackForm({ onSubmitted }: { onSubmitted: () => void 
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE || ""}
-            theme="light" // Could be synced with app theme if desired
+            theme="light" 
           />
         </div>
 
@@ -159,3 +228,4 @@ export default function FeedbackForm({ onSubmitted }: { onSubmitted: () => void 
     </div>
   );
 }
+

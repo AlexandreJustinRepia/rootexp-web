@@ -7,8 +7,10 @@ export default function GrowthCTA() {
   const downloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20%28Early%20Access%29.apk";
 
   const handleDownload = () => {
+    localStorage.setItem("has_downloaded", "true");
     window.location.href = downloadUrl;
   };
+
 
   return (
     <section id="download" className="py-24 px-6 relative overflow-hidden">

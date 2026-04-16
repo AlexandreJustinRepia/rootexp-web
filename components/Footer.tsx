@@ -28,7 +28,17 @@ export default function Footer() {
         <div>
           <h4 className="font-bold mb-6">Application</h4>
           <ul className="space-y-4 text-sm font-bold text-foreground">
-            <li><Link href="#download" className="hover:text-primary transition-colors">Download APK</Link></li>
+            <li><a 
+              href="#download" 
+              onClick={() => {
+                localStorage.setItem("has_downloaded", "true");
+                fetch("/api/stats", { method: "POST" });
+              }}
+              className="hover:text-primary transition-colors cursor-pointer"
+            >
+              Download APK
+            </a></li>
+
             <li><Link href="#features" className="hover:text-primary transition-colors">App Features</Link></li>
             <li><Link href="#" className="hover:text-primary transition-colors">Setup Guide</Link></li>
             <li><Link href="#" className="hover:text-primary transition-colors">Release Notes</Link></li>
