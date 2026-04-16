@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeatureCards from "@/components/FeatureCards";
+import AppShowcase from "@/components/AppShowcase";
 import GrowthCTA from "@/components/GrowthCTA";
 import FeedbackSection from "@/components/FeedbackSection";
 import Footer from "@/components/Footer";
@@ -14,6 +15,7 @@ export default function Home() {
         <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-background to-surface -z-10" />
         <FeatureCards />
       </div>
+      <AppShowcase />
       <GrowthCTA />
       <FeedbackSection />
       <Footer />
