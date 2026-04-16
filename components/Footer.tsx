@@ -4,10 +4,16 @@ import { Trees } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import PrivacyModal from "./PrivacyModal";
+import SecurityModal from "./SecurityModal";
+import SetupModal from "./SetupModal";
+import ReleaseModal from "./ReleaseModal";
 
 export default function Footer() {
 
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isSecurityOpen, setIsSecurityOpen] = useState(false);
+  const [isSetupOpen, setIsSetupOpen] = useState(false);
+  const [isReleaseOpen, setIsReleaseOpen] = useState(false);
 
   return (
     <footer className="py-20 px-6 border-t border-primary/5 bg-surface dark:bg-surface/50">
@@ -34,14 +40,28 @@ export default function Footer() {
                 localStorage.setItem("has_downloaded", "true");
                 fetch("/api/stats", { method: "POST" });
               }}
-              className="hover:text-primary transition-colors cursor-pointer"
+              className="hover:text-primary transition-colors cursor-pointer text-left"
             >
               Download APK
             </a></li>
 
             <li><Link href="#features" className="hover:text-primary transition-colors">App Features</Link></li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Setup Guide</Link></li>
-            <li><a href="https://github.com/AlexandreJustinRepia/ajWallet/releases/tag/RootEXP" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Release Notes</a></li>
+            <li>
+              <button 
+                onClick={() => setIsSetupOpen(true)}
+                className="hover:text-primary transition-colors cursor-pointer text-left font-bold"
+              >
+                Setup Guide
+              </button>
+            </li>
+            <li>
+              <button 
+                onClick={() => setIsReleaseOpen(true)}
+                className="hover:text-primary transition-colors cursor-pointer text-left font-bold"
+              >
+                Release Notes
+              </button>
+            </li>
           </ul>
         </div>
         
@@ -56,8 +76,14 @@ export default function Footer() {
                 Privacy Policy
               </button>
             </li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Security Details</Link></li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Contact Support</Link></li>
+            <li>
+              <button 
+                onClick={() => setIsSecurityOpen(true)}
+                className="hover:text-primary transition-colors cursor-pointer text-left font-bold"
+              >
+                Security Details
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -70,6 +96,21 @@ export default function Footer() {
         isOpen={isPrivacyOpen} 
         onClose={() => setIsPrivacyOpen(false)} 
       />
+
+      <SecurityModal 
+        isOpen={isSecurityOpen} 
+        onClose={() => setIsSecurityOpen(false)} 
+      />
+
+      <SetupModal 
+        isOpen={isSetupOpen} 
+        onClose={() => setIsSetupOpen(false)} 
+      />
+
+      <ReleaseModal 
+        isOpen={isReleaseOpen} 
+        onClose={() => setIsReleaseOpen(false)} 
+      />
     </footer>
   );
-}
+}

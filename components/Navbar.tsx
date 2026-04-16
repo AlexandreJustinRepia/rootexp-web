@@ -46,6 +46,7 @@ export default function Navbar() {
           <Link href="/" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Home</Link>
           <Link href="#features" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Features</Link>
           <Link href="#ratings" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Ratings</Link>
+          <Link href="#support" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Support</Link>
           <ThemeToggle />
           <a 
             href="#download" 
@@ -78,6 +79,7 @@ export default function Navbar() {
             <Link href="/" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Home</Link>
             <Link href="#features" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Features</Link>
             <Link href="#ratings" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Ratings</Link>
+            <Link href="#support" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Support</Link>
             <div className="flex justify-center">
               <ThemeToggle />
             </div>
