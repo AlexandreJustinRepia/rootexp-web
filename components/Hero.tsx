@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Download, Smartphone, Sparkles } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 import DownloadBadge from "./DownloadBadge";
@@ -10,6 +10,7 @@ export default function Hero() {
   const [activeSkinIndex, setActiveSkinIndex] = useState(0);
   const [downloadCount, setDownloadCount] = useState(0);
   const [growthProgress, setGrowthProgress] = useState(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
   
   const fetchStats = useCallback(async () => {
     try {
@@ -83,12 +84,37 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
           className="relative lg:ml-auto w-full flex justify-center items-center"
+          onClick={() => setHasInteracted(true)}
         >
           <div className="relative w-full max-w-[600px] aspect-square flex justify-center items-end overflow-visible">
             <FinancialTree 
               onProgressUpdate={setGrowthProgress}
               onSkinChange={setActiveSkinIndex}
             />
+
+            {/* Hint Badge */}
+            <AnimatePresence>
+              {!hasInteracted && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ 
+                    opacity: 1, 
+                    y: [0, -10, 0],
+                  }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ 
+                    opacity: { duration: 0.5 },
+                    y: { repeat: Infinity, duration: 2, ease: "easeInOut" }
+                  }}
+                  className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 pointer-events-none"
+                >
+                  <div className="glass-base px-6 py-3 rounded-2xl border-primary/20 shadow-2xl flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    <span className="text-sm font-black tracking-tight text-foreground/80">Tap to Shake! 🍃</span>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
             
             <motion.div 
               key={activeSkin.name}
