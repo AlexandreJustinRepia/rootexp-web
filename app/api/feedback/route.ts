@@ -6,14 +6,10 @@ export async function POST(req: Request) {
     const { rating, comment, user_name, token } = await req.json();
 
     // 1. Verify reCAPTCHA token with Google
-    const params = new URLSearchParams();
-    params.append("secret", process.env.RECAPTCHA_SECRET || "");
-    params.append("response", token);
-
     const recaptchaRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: params.toString(),
+      body: `secret=${process.env.RECAPTCHA_SECRET}&response=${token}`,
     });
 
     const recaptchaData = await recaptchaRes.json();

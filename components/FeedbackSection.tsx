@@ -42,7 +42,7 @@ export default function FeedbackSection() {
   }, [fetchFeedback]);
 
   return (
-    <section id="feedback" className="py-24 px-6 relative overflow-hidden bg-surface/30">
+    <section id="ratings" className="py-24 px-6 relative overflow-hidden bg-surface/30">
       <div className="absolute top-0 right-0 w-1/3 h-full -z-10 bg-[radial-gradient(circle_at_100%_20%,rgba(27,94,32,0.05),transparent_70%)]" />
       
       <div className="max-w-7xl mx-auto">
