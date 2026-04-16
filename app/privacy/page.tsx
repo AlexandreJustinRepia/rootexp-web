@@ -98,7 +98,7 @@ export default function PrivacyPolicy() {
               We are committed to your financial integrity. If you have questions about our offline-first approach, reach out.
             </p>
             <a 
-              href="mailto:support@rootexp.com" 
+              href="mailto:alexwaquiz11@gmail.com" 
               className="inline-block bg-background text-primary px-8 py-3 rounded-xl font-bold hover:scale-105 transition-transform"
             >
               Contact Support
