@@ -287,7 +287,7 @@ export default function Hero() {
           </h1>
           
           <p className="text-lg text-foreground mb-10 max-w-lg leading-relaxed">
-            RootEXP is an offline-first financial powerhouse. <strong className="text-primary">The living, swaying tree you see here is the exact dynamic model rendering inside the app's budget tracker.</strong> Secured on-device. Managed by you.
+            RootEXP is an offline-first financial powerhouse. <strong className="text-primary">The living, swaying tree you see here is the exact dynamic model rendering inside the app's budget tracker.</strong> Developed by <strong className="text-primary">Alexandre Justin Repia</strong>. Secured on-device. Managed by you.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">

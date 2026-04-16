@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { Download, Shield, AlertTriangle, Info } from "lucide-react";
 
 export default function GrowthCTA() {
-  const downloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20%28Early%20Access%29.apk";
+  const officialDownloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20%28Early%20Access%29.apk";
+  const alternativeDownloadUrl = "https://github.com/AlexandreJustinRepia/ajWallet/releases/tag/RootEXP";
 
-  const handleDownload = () => {
+  const handleDownload = (url: string) => {
     localStorage.setItem("has_downloaded", "true");
-    window.location.href = downloadUrl;
+    window.location.href = url;
   };
 
 
@@ -39,11 +40,19 @@ export default function GrowthCTA() {
           {/* Main CTA */}
           <div className="flex flex-col gap-6 justify-center items-center">
             <button 
-              onClick={handleDownload}
+              onClick={() => handleDownload(officialDownloadUrl)}
               className="w-full sm:w-auto bg-primary text-background px-10 py-5 rounded-3xl font-black text-xl shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-transform flex items-center justify-center gap-3 cursor-pointer"
             >
               <Download size={24} />
               Download APK (Android)
+            </button>
+
+            <button 
+              onClick={() => handleDownload(alternativeDownloadUrl)}
+              className="text-sm font-bold text-primary/60 hover:text-primary transition-colors cursor-pointer flex items-center gap-2"
+            >
+              <Download size={14} />
+              Alternative Link (GitHub Release)
             </button>
 
             {/* Combined Early Access & Security Notice */}

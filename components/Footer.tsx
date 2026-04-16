@@ -41,7 +41,7 @@ export default function Footer() {
 
             <li><Link href="#features" className="hover:text-primary transition-colors">App Features</Link></li>
             <li><Link href="#" className="hover:text-primary transition-colors">Setup Guide</Link></li>
-            <li><Link href="#" className="hover:text-primary transition-colors">Release Notes</Link></li>
+            <li><a href="https://github.com/AlexandreJustinRepia/ajWallet/releases/tag/RootEXP" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Release Notes</a></li>
           </ul>
         </div>
         
@@ -63,7 +63,7 @@ export default function Footer() {
       </div>
       
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-primary/5 text-center text-sm font-bold text-foreground/40">
-        © 2026 RootEXP.
+        © 2026 RootEXP. Developed by <span className="text-primary/60">Alexandre Justin Repia</span>
       </div>
 
       <PrivacyModal 
