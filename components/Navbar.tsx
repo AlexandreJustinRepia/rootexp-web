@@ -46,10 +46,9 @@ export default function Navbar() {
           <Link href="/" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Home</Link>
           <Link href="#features" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Features</Link>
           <Link href="#ratings" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Ratings</Link>
-          <Link href="#support" className="text-sm font-bold text-foreground hover:text-primary transition-colors">Support</Link>
           <ThemeToggle />
-          <a 
-            href="#download" 
+          <a
+            href="#download"
             onClick={() => {
               localStorage.setItem("has_downloaded", "true");
               fetch("/api/stats", { method: "POST" });
@@ -70,7 +69,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="absolute top-24 left-6 right-6 glass-base glass-nav p-6 rounded-2xl md:hidden"
@@ -79,12 +78,11 @@ export default function Navbar() {
             <Link href="/" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Home</Link>
             <Link href="#features" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Features</Link>
             <Link href="#ratings" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Ratings</Link>
-            <Link href="#support" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Support</Link>
             <div className="flex justify-center">
               <ThemeToggle />
             </div>
-            <a 
-              href="#download" 
+            <a
+              href="#download"
               onClick={() => {
                 setIsOpen(false);
                 localStorage.setItem("has_downloaded", "true");
@@ -101,4 +99,4 @@ export default function Navbar() {
       )}
     </nav>
   );
-}
+}
