@@ -147,7 +147,7 @@ export default function AppShowcase() {
                     animate="center"
                     exit="exit"
                     transition={{ duration: 0.35, ease: "easeInOut" }}
-                    className="w-full h-full"
+                    className="relative w-full h-full"
                   >
                     <Image
                       src={current.image}
@@ -251,7 +251,7 @@ export default function AppShowcase() {
                     <button
                       key={i}
                       onClick={() => navigate(i)}
-                      className="relative rounded-xl overflow-hidden transition-all duration-300 flex-shrink-0"
+                      className="relative rounded-xl overflow-hidden transition-all duration-300 flex-shrink-0 block"
                       style={{
                         width: 44,
                         height: 80,
