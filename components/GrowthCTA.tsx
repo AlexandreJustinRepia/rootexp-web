@@ -1,17 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, Shield, AlertTriangle, Info } from "lucide-react";
+import { Download, Shield, AlertTriangle, Info, RefreshCw, Database } from "lucide-react";
 
 export default function GrowthCTA() {
-  const officialDownloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20%28Early%20Access%29.apk";
-  const alternativeDownloadUrl = "https://github.com/AlexandreJustinRepia/ajWallet/releases/tag/RootEXP";
+  const officialDownloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20v0.2.0.apk";
+  const alternativeDownloadUrl = "https://github.com/AlexandreJustinRepia/ajWallet/releases/tag/RootEXP_v0.2.0";
 
   const handleDownload = (url: string) => {
     localStorage.setItem("has_downloaded", "true");
     window.location.href = url;
   };
 
+  const steps = [
+    {
+      icon: <Database size={18} />,
+      title: "Backup v0.1.0",
+      desc: "Open your current app and export a backup file."
+    },
+    {
+      icon: <RefreshCw size={18} />,
+      title: "Uninstall Old Version",
+      desc: "Remove RootEXP v0.1.0 from your device."
+    },
+    {
+      icon: <Download size={18} />,
+      title: "Install v0.2.0+",
+      desc: "Download and install the new APK below."
+    },
+    {
+      icon: <Info size={18} />,
+      title: "Import Data",
+      desc: "Open v0.2.0 and import your backup file."
+    }
+  ];
 
   return (
     <section id="download" className="py-24 px-6 relative overflow-hidden">
@@ -36,6 +58,31 @@ export default function GrowthCTA() {
           <p className="text-xl text-foreground mb-10 leading-relaxed max-w-2xl mx-auto font-medium">
             The app is fully functional and ready to go. No external dependencies, no subscriptions, no data tracking. Just you, your money, and your forest.
           </p>
+
+          {/* Migration Guide */}
+          <div className="mb-12 text-left max-w-2xl mx-auto">
+            <div className="flex items-center gap-3 mb-6 bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl">
+              <AlertTriangle className="text-amber-500 shrink-0" size={24} />
+              <div>
+                <p className="text-sm font-black text-amber-500 uppercase tracking-widest">v0.2.0 Upgrade Notice</p>
+                <p className="text-xs font-bold text-amber-500/80">To preserve your data, please follow these steps before updating:</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {steps.map((step, index) => (
+                <div key={index} className="p-4 rounded-2xl bg-surface/50 border border-primary/5 flex gap-4 items-start">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                    {step.icon}
+                  </div>
+                  <div>
+                    <p className="text-sm font-black tracking-tight">{step.title}</p>
+                    <p className="text-xs font-bold text-foreground/40 leading-snug">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           
           {/* Main CTA */}
           <div className="flex flex-col gap-6 justify-center items-center">
