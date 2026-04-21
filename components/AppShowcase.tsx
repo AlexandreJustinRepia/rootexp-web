@@ -3,12 +3,30 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
 const screens = [
   {
+    id: 8,
+    image: "/features/v 0.2.0/2.png",
+    title: "Squads & Group Expenses",
+    subtitle: "Manage shared finances with roommates, travel buddies, or teams",
+    tag: "Squads",
+    tagColor: "#FFD700",
+    isNew: true,
+  },
+  {
+    id: 9,
+    image: "/features/v 0.2.0/1.png",
+    title: "Professional Export Tools",
+    subtitle: "Generate professional reports in Excel (.xlsx), PDF, and CSV formats",
+    tag: "Exports",
+    tagColor: "#F44336",
+    isNew: true,
+  },
+  {
     id: 1,
-    image: "/features/1.png",
+    image: "/features/v 0.1.0/1.png",
     title: "Grow Your Wealth",
     subtitle: "Your balance comes to life as a living tree",
     tag: "Dashboard",
@@ -16,7 +34,7 @@ const screens = [
   },
   {
     id: 2,
-    image: "/features/2.png",
+    image: "/features/v 0.1.0/2.png",
     title: "Track Every Expense",
     subtitle: "Monitor, analyze, and understand your spending in one place",
     tag: "Activity",
@@ -24,7 +42,7 @@ const screens = [
   },
   {
     id: 3,
-    image: "/features/3.png",
+    image: "/features/v 0.1.0/3.png",
     title: "Plan Your Finances",
     subtitle: "Set goals, budgets, and manage debts",
     tag: "Planning",
@@ -32,7 +50,7 @@ const screens = [
   },
   {
     id: 4,
-    image: "/features/4.png",
+    image: "/features/v 0.1.0/4.png",
     title: "Your AI Finance Assistant",
     subtitle: "Ask questions and get smart insights instantly",
     tag: "AI Assistant",
@@ -40,7 +58,7 @@ const screens = [
   },
   {
     id: 5,
-    image: "/features/5.png",
+    image: "/features/v 0.1.0/5.png",
     title: "Turn Saving Into a Game",
     subtitle: "Earn rewards, unlock styles, and grow your experience",
     tag: "Gamification",
@@ -48,7 +66,7 @@ const screens = [
   },
   {
     id: 6,
-    image: "/features/6.png",
+    image: "/features/v 0.1.0/6.png",
     title: "Customize Your App",
     subtitle: "Switch between unique themes and card styles",
     tag: "Themes",
@@ -56,7 +74,7 @@ const screens = [
   },
   {
     id: 7,
-    image: "/features/7.png",
+    image: "/features/v 0.1.0/7.png",
     title: "Secure Your Data",
     subtitle: "Protect and backup your account with military-grade encryption",
     tag: "Security",
@@ -76,7 +94,7 @@ export default function AppShowcase() {
   const prev = () => navigate((active - 1 + screens.length) % screens.length);
   const next = () => navigate((active + 1) % screens.length);
 
-  const current = screens[active];
+  const current = (screens as any)[active];
 
   const variants = {
     enter: (dir: number) => ({ x: dir > 0 ? 80 : -80, opacity: 0, scale: 0.95 }),
@@ -155,7 +173,7 @@ export default function AppShowcase() {
                       fill
                       className="object-cover object-top"
                       sizes="280px"
-                      priority={active === 0}
+                      priority={active < 3}
                     />
                   </motion.div>
                 </AnimatePresence>
@@ -208,20 +226,31 @@ export default function AppShowcase() {
                 transition={{ duration: 0.3 }}
                 className="flex flex-col gap-6"
               >
-                {/* Tag */}
-                <div
-                  className="inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full text-xs font-black tracking-widest uppercase"
-                  style={{
-                    backgroundColor: `${current.tagColor}22`,
-                    color: current.tagColor,
-                    border: `1px solid ${current.tagColor}44`,
-                  }}
-                >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: current.tagColor }}
-                  />
-                  {current.tag}
+                {/* Tag Container */}
+                <div className="flex items-center gap-3">
+                  {/* Tag */}
+                  <div
+                    className="inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full text-xs font-black tracking-widest uppercase"
+                    style={{
+                      backgroundColor: `${current.tagColor}22`,
+                      color: current.tagColor,
+                      border: `1px solid ${current.tagColor}44`,
+                    }}
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ backgroundColor: current.tagColor }}
+                    />
+                    {current.tag}
+                  </div>
+
+                  {/* NEW Badge */}
+                  {current.isNew && (
+                    <div className="px-3 py-1 bg-amber-500 rounded-full flex items-center gap-1.5 animate-pulse shadow-lg shadow-amber-500/20">
+                      <Sparkles size={10} className="text-white fill-white" />
+                      <span className="text-[10px] font-black tracking-tighter text-white uppercase italic">NEW</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Title */}
