@@ -11,10 +11,69 @@ import {
   FileSpreadsheet, 
   Zap, 
   AlertTriangle,
-  Info
+  Info,
+  RefreshCw
 } from "lucide-react";
 
 export const releases = [
+  {
+    version: "v0.3.0",
+    date: "April 23, 2026",
+    title: "The 'Shopping & Manage Categories' Update",
+    notice: "Welcome to RootEXP v0.3.0! This 'Mega Update' gives you the power to define your own categories and manage complex shopping needs with ease. You can update directly from v0.2.0 without uninstalling—just be sure to backup your data first as a precaution!",
+    sections: [
+      {
+        title: "🛒 Smart Shopping Evolution",
+        items: [
+          { icon: <FileSpreadsheet className="text-primary" size={16} />, text: "Store Association: Link lists to specific stores to track unique item availability and localized pricing." },
+          { icon: <Zap className="text-primary" size={16} />, text: "Price Recognition: Easily manage varying prices for the same item across different retailers in your area." },
+          { icon: <RefreshCw className="text-primary" size={16} />, text: "Multi-List Management: Create separate lists for Groceries, Tech, Travel, or specific projects." },
+          { icon: <Sparkles className="text-primary" size={16} />, text: "Drafting & Autosave: Never lose your progress. Start a list and save it as a draft for later." },
+          { icon: <ShieldCheck className="text-primary" size={16} />, text: "Settlement Guard: Smart logic prevents you from settling a list if your wallet balance is too low." }
+        ]
+      },
+      {
+        title: "🏷️ Custom Category Engine",
+        items: [
+          { icon: <Sparkles className="text-primary" size={16} />, text: "User-Defined Categories: You are no longer restricted to defaults—add your own custom categories." },
+          { icon: <Zap className="text-primary" size={16} />, text: "Full CRUD Support: Add, Edit, and Delete categories to match your unique lifestyle and spending habits." },
+          { icon: <Rocket className="text-primary" size={16} />, text: "Icon & Color Library: Pick from a professional library of icons and themes for every category you create." },
+          { icon: <RefreshCw className="text-primary" size={16} />, text: "Manual Sorting: Drag-and-drop your categories to prioritize what you use most on your dashboard." }
+        ]
+      },
+      {
+        title: "🤝 Proactive Debts & Loans",
+        items: [
+          { icon: <Users className="text-primary" size={16} />, text: "Improved UI: A cleaner, more informative debt overview with progress bars and status badges." },
+          { icon: <RefreshCw className="text-primary" size={16} />, text: "Repayment Tracking: Dedicated flows for 'Received Payment' and 'Debt Payment' ensures clarity." },
+          { icon: <AlertTriangle className="text-primary" size={16} />, text: "Overpayment Safeguard: The app now warns you if you're trying to pay back more than what is owed." }
+        ]
+      },
+      {
+        title: "🧮 Integrated 'Pro-Calc' Engine",
+        items: [
+          { icon: <Zap className="text-primary" size={16} />, text: "Calculator Keyboards: Every amount input field now features an integrated mathematical calculator." },
+          { icon: <Sparkles className="text-primary" size={16} />, text: "On-the-fly Arithmetic: Sum up multiple receipts or calculate unit prices directly within the input field." },
+          { icon: <ShieldCheck className="text-primary" size={16} />, text: "Precise Settlements: Ensure every cent is accounted for in squad group expenses and settlements." }
+        ]
+      },
+      {
+        title: "🧠 AI Financial Insights",
+        items: [
+          { icon: <Sparkles className="text-primary" size={16} />, text: "Category-Based Analysis: AI groups spending into 'Essentials', 'Leisure', and 'Debt' for better health overview." },
+          { icon: <Info className="text-primary" size={16} />, text: "Dynamic Advice: Color-coded insights warn of risky ratios or sudden spikes in spending." }
+        ]
+      },
+      {
+        title: "🛠️ Improvements & Bug Fixes",
+        items: [
+          { icon: <RefreshCw className="text-primary" size={16} />, text: "Backup Stability: Added non-dismissible loading indicators to prevent database corruption." },
+          { icon: <Sparkles className="text-primary" size={16} />, text: "UI Polishing: Enhanced glassmorphism effects and smoother transitions across all screens." },
+          { icon: <ShieldCheck className="text-primary" size={16} />, text: "0 Issues Policy: The entire codebase has been audited and cleared of all linting warnings." }
+        ]
+      }
+    ]
+  },
   {
     version: "v0.2.0",
     date: "April 21, 2026",
@@ -144,7 +203,7 @@ export function ReleaseContent() {
       ))}
       
       <div className="text-center p-8 border-2 border-dashed border-primary/5 rounded-3xl opacity-50">
-        <p className="text-sm font-bold text-foreground/40">RootEXP 0.2.0 — Take control of your money, together.</p>
+        <p className="text-sm font-bold text-foreground/40">RootEXP 0.3.0 — Built with ❤️ for privacy-conscious budgeters.</p>
       </div>
     </div>
   );

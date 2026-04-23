@@ -7,13 +7,30 @@ import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
 const screens = [
   {
+    id: 10,
+    image: "/features/v 0.3.0/1.png",
+    title: "Custom Category Engine",
+    subtitle: "Break free from defaults—add and manage your own custom categories with unique icons and colors",
+    tag: "Categories",
+    tagColor: "#AB47BC",
+    isNew: true,
+  },
+  {
+    id: 11,
+    image: "/features/v 0.3.0/2.png",
+    title: "Smart Shopping Evolution",
+    subtitle: "Track store-specific prices and item availability across multiple lists",
+    tag: "Shopping",
+    tagColor: "#FF9800",
+    isNew: true,
+  },
+  {
     id: 8,
     image: "/features/v 0.2.0/2.png",
     title: "Squads & Group Expenses",
     subtitle: "Manage shared finances with roommates, travel buddies, or teams",
     tag: "Squads",
     tagColor: "#FFD700",
-    isNew: true,
   },
   {
     id: 9,
@@ -22,7 +39,6 @@ const screens = [
     subtitle: "Generate professional reports in Excel (.xlsx), PDF, and CSV formats",
     tag: "Exports",
     tagColor: "#F44336",
-    isNew: true,
   },
   {
     id: 1,
@@ -173,7 +189,8 @@ export default function AppShowcase() {
                       fill
                       className="object-cover object-top"
                       sizes="280px"
-                      priority={active < 3}
+                      priority
+                      loading="eager"
                     />
                   </motion.div>
                 </AnimatePresence>

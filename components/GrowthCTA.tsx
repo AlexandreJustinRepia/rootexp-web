@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Download, Shield, AlertTriangle, Info, RefreshCw, Database } from "lucide-react";
 
 export default function GrowthCTA() {
-  const officialDownloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20v0.2.0.apk";
-  const alternativeDownloadUrl = "https://github.com/AlexandreJustinRepia/ajWallet/releases/tag/RootEXP_v0.2.0";
+  const officialDownloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20v0.3.0.apk";
+  const alternativeDownloadUrl = "https://github.com/AlexandreJustinRepia/ajWallet/releases/tag/RootEXP_v0.3.0";
 
   const handleDownload = (url: string) => {
     localStorage.setItem("has_downloaded", "true");
@@ -15,23 +15,23 @@ export default function GrowthCTA() {
   const steps = [
     {
       icon: <Database size={18} />,
-      title: "Backup v0.1.0",
-      desc: "Open your current app and export a backup file."
+      title: "Backup Data",
+      desc: "Always export a backup file first to keep your records safe."
     },
     {
       icon: <RefreshCw size={18} />,
-      title: "Uninstall Old Version",
-      desc: "Remove RootEXP v0.1.0 from your device."
+      title: "Update Directly",
+      desc: "If you have v0.2.0, you can install v0.3.0 without uninstalling."
     },
     {
       icon: <Download size={18} />,
-      title: "Install v0.2.0+",
-      desc: "Download and install the new APK below."
+      title: "Install v0.3.0",
+      desc: "Download and install the latest APK from the links below."
     },
     {
       icon: <Info size={18} />,
-      title: "Import Data",
-      desc: "Open v0.2.0 and import your backup file."
+      title: "Verify Records",
+      desc: "Open the app and ensure all your data is preserved."
     }
   ];
 
@@ -64,8 +64,8 @@ export default function GrowthCTA() {
             <div className="flex items-center gap-3 mb-6 bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl">
               <AlertTriangle className="text-amber-500 shrink-0" size={24} />
               <div>
-                <p className="text-sm font-black text-amber-500 uppercase tracking-widest">v0.2.0 Upgrade Notice</p>
-                <p className="text-xs font-bold text-amber-500/80">To preserve your data, please follow these steps before updating:</p>
+                <p className="text-sm font-black text-amber-500 uppercase tracking-widest">v0.3.0 Update Guide</p>
+                <p className="text-xs font-bold text-amber-500/80">You can now update directly from v0.2.0. Please backup your data first just in case!</p>
               </div>
             </div>
 
