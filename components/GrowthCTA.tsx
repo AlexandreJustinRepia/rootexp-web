@@ -1,11 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Download, Shield, AlertTriangle, Info, RefreshCw, Database } from "lucide-react";
 
 export default function GrowthCTA() {
   const officialDownloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20v0.3.0.apk";
   const alternativeDownloadUrl = "https://github.com/AlexandreJustinRepia/ajWallet/releases/tag/RootEXP_v0.3.0";
+  const apkPureUrl = "https://apkpure.com/p/com.rootexp.aj";
 
   const handleDownload = (url: string) => {
     localStorage.setItem("has_downloaded", "true");
@@ -86,13 +88,23 @@ export default function GrowthCTA() {
           
           {/* Main CTA */}
           <div className="flex flex-col gap-6 justify-center items-center">
-            <button 
-              onClick={() => handleDownload(officialDownloadUrl)}
-              className="w-full sm:w-auto bg-primary text-background px-10 py-5 rounded-3xl font-black text-xl shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-transform flex items-center justify-center gap-3 cursor-pointer"
-            >
-              <Download size={24} />
-              Download APK (Android)
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <button 
+                onClick={() => handleDownload(officialDownloadUrl)}
+                className="flex-1 sm:flex-none bg-primary text-background px-10 py-5 rounded-3xl font-black text-xl shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-transform flex items-center justify-center gap-3 cursor-pointer"
+              >
+                <Download size={24} />
+                Download APK
+              </button>
+
+              <button 
+                onClick={() => handleDownload(apkPureUrl)}
+                className="flex-1 sm:flex-none bg-[#24BE64] text-white px-10 py-5 rounded-3xl font-black text-xl shadow-2xl shadow-[#24BE64]/40 hover:scale-105 active:scale-95 transition-transform flex items-center justify-center gap-3 cursor-pointer"
+              >
+                <Image src="/logo/apkpure-logo.png" alt="APKPure" width={32} height={32} className="object-contain" />
+                APKPure
+              </button>
+            </div>
 
             <button 
               onClick={() => handleDownload(alternativeDownloadUrl)}

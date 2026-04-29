@@ -131,7 +131,7 @@ export default function AppShowcase() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold mb-5">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            Play Store Preview
+            APKPure Preview
           </div>
           <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight">
             See RootEXP in Action
