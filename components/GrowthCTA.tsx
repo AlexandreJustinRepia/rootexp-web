@@ -23,11 +23,11 @@ export default function GrowthCTA() {
     {
       icon: <RefreshCw size={18} />,
       title: "Update Directly",
-      desc: "If you have v0.2.0, you can install v0.3.0 without uninstalling."
+      desc: "If you have a previous version, you can install v0.4.0 without uninstalling."
     },
     {
       icon: <Download size={18} />,
-      title: "Install v0.3.0",
+      title: "Install v0.4.0",
       desc: "Download and install the latest APK from the links below."
     },
     {
@@ -66,8 +66,8 @@ export default function GrowthCTA() {
             <div className="flex items-center gap-3 mb-6 bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl">
               <AlertTriangle className="text-amber-500 shrink-0" size={24} />
               <div>
-                <p className="text-sm font-black text-amber-500 uppercase tracking-widest">v0.3.0 Update Guide</p>
-                <p className="text-xs font-bold text-amber-500/80">You can now update directly from v0.2.0. Please backup your data first just in case!</p>
+                <p className="text-sm font-black text-amber-500 uppercase tracking-widest">v0.4.0 Update Guide</p>
+                <p className="text-xs font-bold text-amber-500/80">You can now update directly from any previous version. Please backup your data first just in case!</p>
               </div>
             </div>
 
