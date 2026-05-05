@@ -89,7 +89,7 @@ export default function Footer() {
       </div>
       
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-primary/5 text-center text-sm font-bold text-foreground/40">
-        © 2026 RootEXP. Developed by <span className="text-primary/60">{process.env.DEVELOPER_NAME}</span>
+        © 2026 RootEXP. Developed by <span className="text-primary/60">Alexandre Justin Repia</span>
       </div>
 
       <PrivacyModal 
