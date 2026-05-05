@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Download, Shield, AlertTriangle, Info, RefreshCw, Database } from "lucide-react";
 
 export default function GrowthCTA() {
-  const officialDownloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%200.4.0.apk";
+  const officialDownloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20v0.4.0.apk";
   const alternativeDownloadUrl = "https://github.com/AlexandreJustinRepia/ajWallet/releases/tag/RootEXP_v0.4.0";
   const apkPureUrl = "https://apkpure.com/p/com.rootexp.aj";
 
