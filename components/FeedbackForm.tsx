@@ -182,7 +182,7 @@ export default function FeedbackForm({ onSubmitted }: { onSubmitted: () => void 
         <div className="flex justify-center py-2 overflow-hidden">
           <ReCAPTCHA
             ref={recaptchaRef}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE || ""}
+            sitekey={process.env.RECAPTCHA_SITE || ""}
             theme="light" 
           />
         </div>

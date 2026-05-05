@@ -5,9 +5,10 @@ import Image from "next/image";
 import { Download, Shield, AlertTriangle, Info, RefreshCw, Database } from "lucide-react";
 
 export default function GrowthCTA() {
-  const officialDownloadUrl = "https://ygqchzi8ix54u4fs.public.blob.vercel-storage.com/RootEXP%20v0.3.0.apk";
-  const alternativeDownloadUrl = "https://github.com/AlexandreJustinRepia/ajWallet/releases/tag/RootEXP_v0.3.0";
-  const apkPureUrl = "https://apkpure.com/p/com.rootexp.aj";
+  const officialDownloadUrl = process.env.OFFICIAL_DOWNLOAD_URL || "";
+  const alternativeDownloadUrl = process.env.ALTERNATIVE_DOWNLOAD_URL || "";
+  const apkPureUrl = process.env.APK_PURE_URL || "";
+  const appVersion = process.env.APP_VERSION || "v0.0.0";
 
   const handleDownload = (url: string) => {
     localStorage.setItem("has_downloaded", "true");
@@ -23,12 +24,12 @@ export default function GrowthCTA() {
     {
       icon: <RefreshCw size={18} />,
       title: "Update Directly",
-      desc: "If you have v0.2.0, you can install v0.3.0 without uninstalling."
+      desc: `If you have an older version, you can install ${appVersion} without uninstalling.`
     },
     {
       icon: <Download size={18} />,
-      title: "Install v0.3.0",
-      desc: "Download and install the latest APK from the links below."
+      title: `Install ${appVersion}`,
+      desc: `Download and install the latest APK from the links below.`
     },
     {
       icon: <Info size={18} />,
@@ -66,8 +67,8 @@ export default function GrowthCTA() {
             <div className="flex items-center gap-3 mb-6 bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl">
               <AlertTriangle className="text-amber-500 shrink-0" size={24} />
               <div>
-                <p className="text-sm font-black text-amber-500 uppercase tracking-widest">v0.3.0 Update Guide</p>
-                <p className="text-xs font-bold text-amber-500/80">You can now update directly from v0.2.0. Please backup your data first just in case!</p>
+                <p className="text-sm font-black text-amber-500 uppercase tracking-widest">{appVersion} Update Guide</p>
+                <p className="text-xs font-bold text-amber-500/80">You can now update directly from previous versions. Please backup your data first just in case!</p>
               </div>
             </div>
 
